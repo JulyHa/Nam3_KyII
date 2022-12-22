@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <script type="text/javascript" src="Scripts/jquery-3.6.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Thuc Hanh API</title>
+</head>
+<body>
+
+    <div class="container">
+        <table style="border:none">
+            <tbody>
+
+                <tr>
+                    <td style="width:150px" for ="txtMaSP">Mã sản phẩm: </td>
+                    <td>
+                        <input  type="text" name="MaSP"
+                               placeholder="Mã sản phẩm" id="txtMaSP"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:30px" for="txtTenSP">Tên sản phẩm: </td>
+                    <td>
+                        <input  type="text" name="TenSP" placeholder="Tên sản phẩm" id ="txtTenSP" />
+                    </td>
+                </tr>
+                <tr>
+                    <td for ="txtMota">Mô tả: </td>
+                    <td>
+                        <input type="text" name="MoTa"
+                               placeholder="Mô tả SP" id ="txtMota" />
+                    </td>
+                </tr>
+                <tr>
+                    <td for="txtGiaNhap">Giá nhập vào: </td>
+                    <td>
+                        <input  type="text" name="GiaNhap"
+                               placeholder="Giá nhập" id="txtGiaNhap" />
+                    </td>
+                </tr>
+                <tr>
+                    <td for="txtGiaBan">Giá bán ra: </td>
+                    <td>
+                        <input  type="text" name="GiaBan"
+                               placeholder="Giá bán" id="txtGiaBan" />
+                    </td>
+                </tr>
+                <tr>
+                    <td for ="txtSL">Số lượng: </td> 
+                    <td>
+                        <input  type="text" name="SoLuong"
+                               placeholder="Số lượng" id="txtSL" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn-primary update-button"
+                                onclick="insertSP();">
+                            Thêm mới
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn-primary update-button"
+                                onclick="updateSP();">
+                            Sửa
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn-primary update-button"
+                                onclick="deleteSP();">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container">
+        <table id="DuLieu" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Mã sản phẩm </th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mô tả</th>
+                    <th>Giá nhập</th>
+                    <th>Giá bán</th>
+                    <th>Số lượng</th>
+                    <th>Xóa</th>
+                    <th>Sửa</th>
+                </tr>
+            </thead>
+            <tbody id="allSP">
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetAllSP();
+    });
+    //Hàm lấy ra toàn bộ danh sách Khách Hàng. Dùng $.ajax() thực hiện method HTTP GET
+    function GetAllSP() {
+        $.ajax({
+            url: 'https://localhost:44310/api/AllSP/',
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+            },
+            success: function (reponse) {
+                const len = reponse.length;
+                console.log(reponse);
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table = table + '<tr>';
+                    table = table + '<td>' + reponse[i].MaSP + '</td>';
+                    table = table + '<td>' + reponse[i].TenSP + '</td>';
+                    table = table + '<td>' + reponse[i].MoTa + '</td>';
+                    table = table + '<td>' + reponse[i].GiaNhap + '</td>';
+                    table = table + '<td>' + reponse[i].GiaBan + '</td>';
+                    table = table + '<td>' + reponse[i].SoLuong + '</td>';
+                    table = table + '<td> <button type="button" class="btn btn-danger" onclick="DeleteCustomer(\'' + reponse[i].MaSP + '\')">Delete</button> </td>';
+                    table = table + '<td> <button type="button" class="btn btn-warning" onclick="GetCustomer(\'' + reponse[i].MaSP + '\')">Edit</button> </td>';
+                    table = table + '</tr>';
+                }
+                document.getElementById('allSP').innerHTML = table;
+            },
+            fail: function (response) {
+            }
+        });
+    }
+
+    //Hàm lấy Thêm mới Khách hàng. Dùng $.ajax() thực hiện method HTTP POST
+    function insertSP() {
+        var url = 'https://localhost:44310/api/SanPham?id=' +
+            $('input').eq(0).val() + '&name=' + $('input').eq(1).val() + '&mota=' + $('input').eq(2).val()
+            + '&nhap=' + $('input').eq(3).val() +
+            '&xuat=' + $('input').eq(4).val() + '&sl=' + $('input').eq(5).val();
+        $.ajax({
+            url: url,
+            method: 'POST',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                alert("Thêm mới không thành công\n");
+                alert(url);
+            },
+            success: function (reponse) {
+                alert("Thêm mới thành công");
+                GetAllSP(); //Gọi đến hàm lấy dữ liệu lên bảng
+            }
+        });
+    }
+    function GetCustomer(id) {
+        var url = 'https://localhost:44310/api/AllSP';
+        $.ajax({
+            url: url + "/" + id,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (reponse) {
+            },
+            success: function (reponse) {
+                alert(reponse.MaSP);
+                $("#txtMaSP").val(reponse.MaSP),
+                    $("#txtTenSP").val(reponse.TenSP),
+                    $("#txtMota").val(reponse.MoTa),
+                    $("#txtGiaNhap").val(reponse.GiaNhap),
+                    $("#txtGiaBan").val(reponse.GiaBan),
+                    $("#txtSL").val(reponse.SoLuong)
+            },
+            fail: function (response) {
+            }
+
+        })
+    }
+
+    // Sửa 1 sp
+    function updateSP() {
+        var url = 'https://localhost:44310/api/SanPham?id=' +
+            $('input').eq(0).val() + '&name=' + $('input').eq(1).val() + '&mota=' + $('input').eq(2).val()
+            + '&nhap=' + $('input').eq(3).val() +
+            '&xuat=' + $('input').eq(4).val() + '&sl=' + $('input').eq(5).val();
+        $.ajax({
+            url: url,
+            method: 'PUT',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                alert("Sửa không thành công\n");
+                alert(url);
+            },
+            success: function (reponse) {
+                alert("Sửa thành công");
+                GetAllSP(); //Gọi đến hàm lấy dữ liệu lên bảng
+            }
+        });
+    }
+
+    // Xóa 1 sp
+    function deleteSP() {
+        var url = 'https://localhost:44310/api/SanPham?id=' + $('input').eq(0).val();
+        $.ajax({
+            url: url,
+            method: 'DELETE',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                alert("Xóa không thành công\n");
+                alert(url);
+            },
+            success: function (reponse) {
+                alert("Xóa thành công");
+                GetAllSP(); //Gọi đến hàm lấy dữ liệu lên bảng
+            }
+        });
+    }
+    function DeleteCustomer(id) {
+        var url = 'https://localhost:44310/api/SanPham';
+        $.ajax({
+            url: url + "/" + id,
+            method: "DELETE",
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+                alert("Xoa khong thanh cong");
+            },
+            success: function (res) {
+                GetAllSP();
+                alert("Xoa thanh cong");
+               
+            },
+            fail: function (response) { }
+        })
+    }
+
+</script>

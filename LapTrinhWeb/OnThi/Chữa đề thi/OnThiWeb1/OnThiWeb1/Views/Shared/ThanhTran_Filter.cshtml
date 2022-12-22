@@ -1,0 +1,32 @@
+﻿@model List<OnThiWeb1.Models.Category>
+<div class="sorting-list">
+   
+        <div class="sorting-left">
+            <select id="country1" onchange="" class="frm-field required sect">
+                <option value="0"><i class="fa fa-arrow-right" aria-hidden="true"></i>Tất cả</option>
+                @foreach (var item in Model)
+                {
+                    <option  value="@item.Id"><i class="fa fa-arrow-right" aria-hidden="true"></i>@item.NameVN</option>
+                }
+
+            </select>
+        </div>
+        <div class="sorting-text">Filtering By Categories</div>
+        <div class="clearfix"></div>
+    
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+    $('#country1').click(function (e) {
+        var id = $("#country1 option:selected").val()
+       @* var id = $(this).attr("id")*@
+        $.ajax({
+            url:'@Url.Action("EvenDropdownlist")',
+            data: { Idd: id },
+            success: function (response) {
+                $("div.content").html(response);
+                }
+            });
+        });
+</script>

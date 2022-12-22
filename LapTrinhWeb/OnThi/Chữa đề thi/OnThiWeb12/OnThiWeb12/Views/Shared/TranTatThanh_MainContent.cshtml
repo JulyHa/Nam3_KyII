@@ -1,0 +1,31 @@
+﻿
+@model List<OnThiWeb12.Models.Category>
+<div class="col-md-4 products-left">
+    <div class="categories">
+        <h2>Trần Tất Thành</h2>
+
+        <ul class="cate">
+            @foreach (var item in Model)
+            {
+                <li id="@item.Id"><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i>@item.Name</a></li>
+            }
+        </ul>
+
+    </div>
+</div>
+<!-- /left categories -->
+<!-- right products grid -->
+
+<script>
+    $("li").click(function (e) {
+        var id = $(this).attr("id")
+
+        $.ajax({
+            url: "PhanLoaiTheoSanPham",
+            data: { MaSP: id },
+            success: function (response) {
+                $("div.las1").html(response);
+            }
+        });
+    });
+</script>

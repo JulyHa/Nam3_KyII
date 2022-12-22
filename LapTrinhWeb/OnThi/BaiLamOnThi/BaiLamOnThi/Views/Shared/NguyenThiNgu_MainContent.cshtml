@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BaiLamOnThi.Models.Entity.Products>
+
+@Styles.Render("~/Content/mycss")
+@Scripts.Render("~/bundles/js")
+
+@*@model IEnumerable<BaiLamOnThi.Models.Entity.Products>*@
+<!-- Begin New Product -->
+<div class="content_top">
+    <div class="heading">
+        @Html.ActionLink("Nguyễn Thị Ngũ", "Create")
+    </div>
+    <div class="see">
+        <p><a href="#">See all Products</a></p>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="section group">
+    @foreach (var i in Model)
+    {
+        <div class="grid_1_of_4 images_1_of_4">
+            <a href="preview.html"><img src="~/Content/images/@i.Image" alt="Anh" /></a>
+            <h2>@i.Name </h2>
+            <div class="price-details">
+                <div class="price-number">
+                    <p><span class="rupees">$@i.UnitPrice</span></p>
+                </div>
+                <div class="add-cart">
+                    <h4><a href="preview.html">Add to Cart</a></h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- End New Product -->

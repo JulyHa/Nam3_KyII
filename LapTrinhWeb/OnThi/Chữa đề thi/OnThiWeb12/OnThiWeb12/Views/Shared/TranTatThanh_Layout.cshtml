@@ -1,0 +1,55 @@
+﻿<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Shopping</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Super Market, Online Shopping" />
+
+<!-- //for-mobile-apps -->
+
+<link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.css">
+<link href="~/Content/css/skdslider.css" rel="stylesheet" />
+<!-- font-awesome icons -->
+
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+<!-- //font-awesome icons -->
+<!-- js -->
+<script src="~/Scripts/js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+</head>
+	
+<body>
+    <!-- header -->
+    @Html.Partial("TranTatThanh_Header")
+    <!-- //header -->
+    <!-- main navigation -->
+    @Html.Partial("TranTatThanh_MainNavigation")
+    <!-- //main navigation -->
+    <!--- main content --->
+    <div class="products">
+        <div class="container">
+            @RenderBody()
+            @Html.Action("LoadMenu", "ThanhTran")
+                <!-- left categories -->
+                <!-- right products grid -->
+            @Html.Action("LoadProduct", "ThanhTran")
+        </div>
+    </div>
+<!--- main content --->
+<!-- footer -->
+@Html.Partial("TranTatThanh_Footer")
+<!-- //footer -->
+</body>
+</html>

@@ -1,0 +1,35 @@
+[Required(ErrorMessage = "Không được để trống")]
+
+[Range(100, 5000, ErrorMessage = "Giá phải nằm trong khoảng 100-5000")]
+
+[DataType(DataType.MultilineText)]
+
+[DisplayName("Product Name")]
+
+[RegularExpression("[A-Z]{2}[0-9]{4}$",ErrorMessage = "ID có dạng XX0000")]
+
+
+<script>
+    $("li").click(function (e) {
+        var id = $(this).attr("id");
+        $.ajax({
+            url: "RenderbyCata",
+            data: { Id: id },
+            success: function (res) {
+                $("div.pro").html(res);
+            }
+        });
+    })
+
+ $("#btn").click(function (e) {
+        var v = $("#search").val();
+        console.log(v);
+        $.ajax({
+            url: "SearchProduct",
+            data: { Value: v },
+            success: function (res) {
+                $("div.content").html(res);
+            }
+        });
+    });
+</script>

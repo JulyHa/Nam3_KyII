@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <!-- Login FB-->
+    
+    <fb:login-button scope="public_profile,email"
+                     onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0&appId=410400420848649&autoLogAppEvents=1"
+            nonce="3occ3Rgb"></script>
+
+    <!--Hiển thị nút like-->
+
+    <div class="fb-like" data-href="https://www.facebook.com/Tamtinhtuoi19"
+         data-width="100" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+
+
+    <!--Page fb-->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0&appId=410400420848649&autoLogAppEvents=1"
+            nonce="A7bSUnhn"></script>
+
+    <div class="fb-page" data-href="https://www.facebook.com/Tamtinhtuoi19"
+         data-tabs="timeline" data-width="500" data-height="500"
+         data-small-header="true" data-adapt-container-width="true" data-hide-cover="false"
+         data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/Tamtinhtuoi19" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/Tamtinhtuoi19">TÂM TÌNH TUỔI 19</a>
+        </blockquote>
+    </div>
+
+</body>
+</html>
+
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '410400420848649',
+            cookie: true,
+            xfbml: true,
+            version: 'v13.0'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+    });
+    {
+        status: 'connected',
+            authResponse: {
+            accessToken: '...',
+                expiresIn: '...',
+                    signedRequest: '...',
+                        userID: '...'
+        }
+    }
+
+</script>

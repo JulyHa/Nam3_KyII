@@ -1,0 +1,12 @@
+Số thầy: 0912324873
+Thi viết, làm tốt thực hành thì miễn thi
+-Các thuật toán và giao thức mật mã
++Mã hóa đối xứng
++Mã hóa không đối xứng
++Toàn vẹn dữ liệu
++Xác thực
+-An ninh mạng và internet
+Phép toán modunno, dịch trái, dịch phải, phép and, or xor
+Dịch bit:
+- Dịch trái:
+- Dịch phải:

@@ -1,0 +1,87 @@
+﻿@model BailLam3.Models.Entity.Products
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/NguyenThiNgu_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Products</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categories.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Name)
+        </dd>
+        </tr>
+        <tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        </tr>
+        <tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+        </tr>
+        <tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img src="~/Content/images/@Html.DisplayFor(model => model.Image)" alt="Image" />
+        </dd>
+
+        </tr>
+        <tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Available)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Available)
+        </dd>
+        </tr>
+        <tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        </tr>
+
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "BaiThi", FormMethod.Post, new { id = Model.Id }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Delete" class="btn btn-default" />
+    }
+    <div class="form-actions no-color">
+
+        @Html.ActionLink("Back to List", "Index", "BaiThi/Index")
+    </div>
+
+</div>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BaiLamOnThi.Models.Entity.Categories>
+<div class="header">
+    <div class="header_top">
+        <div class="logo">
+            <a href="index.html"><img src="~/Content/images/logo.png" alt="" /></a>
+        </div>
+        <div class="cart">
+            <p>
+                Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">
+                    0 item(s) - $0.00
+                    <ul class="dropdown">
+                        <li>you have no items in your Shopping cart</li>
+                    </ul>
+                </div>
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="header_bottom">
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="#">Nguyễn Thị Ngũ</a></li>
+                @foreach(var i in Model)
+            {
+                <li id="@i.Id"><a>@i.NameVN</a></li>
+            }
+                
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="search_box">
+            <form>
+                <input type="text" id="search" value="" onfocus= "this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                <input type="button" value="" id="btn">
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+    $("li").click(function (e) {
+        var id = $(this).attr("id");
+        $.ajax({
+            url: "RenderCata",
+            data: { Id: id },
+            success: function (response) {
+                $("div.content").html(response);
+
+            }
+        });
+    });
+
+    $("#btn").click(function (e) {
+        var value = $("#search").attr("value");
+        $.ajax({
+            url: "SearchProduct",
+            data: { input: value },
+            success: function (res) {
+                $("div.content").html(res);
+            }
+        });
+    });
+</script>

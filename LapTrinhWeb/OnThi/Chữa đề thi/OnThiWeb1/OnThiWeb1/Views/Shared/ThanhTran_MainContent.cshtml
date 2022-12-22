@@ -1,0 +1,104 @@
+﻿@model List<OnThiWeb1.Models.Product>
+<!-- right products grid -->
+<div class="agile_top_brands_grids">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 top_brand_left">
+
+            <div class="hover14 column">
+
+                <div class="agile_top_brand_left_grid">
+                    <div class="agile_top_brand_left_grid_pos">
+                        <img src="images/offer.png" alt=" " class="img-responsive">
+                    </div>
+                    <div class="agile_top_brand_left_grid1">
+
+                        <figure>
+                            <div class="snipcart-item block">
+                                <div class="snipcart-thumb">
+
+                                    <a href="single.html"><img title=" " alt=" " src="~/Images/images/@item.Image"></a>
+                                    <p>@item.Name</p>
+                                    <h4>@item.UnitPrice</h4>
+
+                                </div>
+                                <div class="snipcart-details top_brand_home_details">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart">
+                                            <input type="hidden" name="add" value="1">
+                                            <input type="hidden" name="business" value=" ">
+                                            <input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+                                            <input type="hidden" name="amount" value="35.99">
+                                            <input type="hidden" name="discount_amount" value="1.00">
+                                            <input type="hidden" name="currency_code" value="USD">
+                                            <input type="hidden" name="return" value=" ">
+                                            <input type="hidden" name="cancel_return" value=" ">
+                                            <input type="submit" name="submit" value="Add to cart" class="button">
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </figure>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    }
+    <div class="clearfix"> </div>
+
+</div>
+<div class="clearfix"> </div>
+<!-- right products grid -->
+@*<div class="agile_top_brands_grids">
+
+    @foreach (var item in Model)
+    {
+        int i = 0;
+        i++;
+        <div class="SanPham">
+
+            <div class="HinhAnh">
+                <img src=@Url.Content("~/Content/images/" +item.Anh) width="100" height="150" />
+            </div>
+            <div class="ThongTin">
+                <div title="@item.Vali">@item.TenVali</div>
+            </div>
+
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+    }
+
+</div>
+<style>
+
+
+    .SanPham {
+        float: left;
+        width: 180px;
+        margin-left: 3%;
+        margin-top: 5px;
+    }
+
+    .HinhAnh {
+        width: 150px;
+        height: 150px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .ThongTin {
+        padding-top: 0px;
+        padding-bottom: 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 200;
+    }
+</style>*@
