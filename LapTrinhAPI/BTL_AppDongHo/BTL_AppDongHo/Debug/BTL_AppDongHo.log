@@ -1,0 +1,6 @@
+﻿  BTL_AppDongHo.cpp
+D:\Uyen\Tonghop\TrenLop_Class\Nam3\Ky_II\LapTrinhAPI\Windown_API\BTL_AppDongHo\BTL_AppDongHo\BTL_AppDongHo.cpp(151,50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Uyen\Tonghop\TrenLop_Class\Nam3\Ky_II\LapTrinhAPI\Windown_API\BTL_AppDongHo\BTL_AppDongHo\BTL_AppDongHo.cpp(299,29): warning C4101: 'BK_Giay': unreferenced local variable
+D:\Uyen\Tonghop\TrenLop_Class\Nam3\Ky_II\LapTrinhAPI\Windown_API\BTL_AppDongHo\BTL_AppDongHo\BTL_AppDongHo.cpp(299,12): warning C4101: 'BK_Gio': unreferenced local variable
+D:\Uyen\Tonghop\TrenLop_Class\Nam3\Ky_II\LapTrinhAPI\Windown_API\BTL_AppDongHo\BTL_AppDongHo\BTL_AppDongHo.cpp(299,20): warning C4101: 'BK_Phut': unreferenced local variable
+  BTL_AppDongHo.vcxproj -> D:\Uyen\Tonghop\TrenLop_Class\Nam3\Ky_II\LapTrinhAPI\Windown_API\BTL_AppDongHo\Debug\BTL_AppDongHo.exe
